@@ -20,6 +20,7 @@ const fields = [
 ];
 
 const calculateButton = document.querySelector(".calculate-button");
+const resetButton = document.querySelector(".reset-button");
 const resultOutputs = [
   document.querySelector('[aria-label="Required clients"]'),
   document.querySelector('[aria-label="Required leads"]'),
@@ -29,6 +30,16 @@ const numberFormatter = new Intl.NumberFormat();
 
 fields.forEach(({ input }) => {
   input.addEventListener("input", () => input.setCustomValidity(""));
+});
+
+resetButton.addEventListener("click", () => {
+  fields.forEach(({ input }) => {
+    input.value = "";
+    input.setCustomValidity("");
+  });
+  resultOutputs.forEach((output) => {
+    output.textContent = "—";
+  });
 });
 
 calculateButton.addEventListener("click", () => {
