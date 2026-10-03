@@ -8,8 +8,99 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <main>
-      <h1>LeadPredictor</h1>
+    <main class="app-shell">
+      <header class="page-header">
+        <p class="eyebrow">SALES PLANNING</p>
+        <h1>LeadPredictor</h1>
+        <p class="page-description">Plan the pipeline you need to reach your revenue target.</p>
+      </header>
+
+      <div class="calculator-layout">
+        <section class="panel input-panel" aria-labelledby="inputs-heading">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">YOUR ASSUMPTIONS</p>
+              <h2 id="inputs-heading">Set your targets</h2>
+            </div>
+          </div>
+
+          <form class="calculator-form">
+            <div class="field">
+              <label for="target-revenue">Target Revenue</label>
+              <div class="input-wrap">
+                <input id="target-revenue" name="target-revenue" type="number" min="0" step="any" placeholder="100,000">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="average-order-value">Average Order Value</label>
+              <div class="input-wrap">
+                <input id="average-order-value" name="average-order-value" type="number" min="0" step="any" placeholder="2,500">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="lead-response-rate">Lead Response Rate</label>
+              <div class="input-wrap percent-input">
+                <input id="lead-response-rate" name="lead-response-rate" type="number" min="0" max="100" step="any" placeholder="25">
+                <span class="input-suffix" aria-hidden="true">%</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="prospect-response-rate">Prospect Response Rate</label>
+              <div class="input-wrap percent-input">
+                <input id="prospect-response-rate" name="prospect-response-rate" type="number" min="0" max="100" step="any" placeholder="10">
+                <span class="input-suffix" aria-hidden="true">%</span>
+              </div>
+            </div>
+
+            <button class="calculate-button" type="button">Calculate <span aria-hidden="true">→</span></button>
+          </form>
+        </section>
+
+        <section class="panel results-panel" aria-labelledby="results-heading">
+          <div class="section-heading results-heading">
+            <div>
+              <p class="section-kicker">YOUR PIPELINE</p>
+              <h2 id="results-heading">Projected requirements</h2>
+            </div>
+            <span class="results-icon" aria-hidden="true">↗</span>
+          </div>
+
+          <div class="result-list" aria-live="polite">
+            <article class="result-card">
+              <div class="result-marker clients-marker" aria-hidden="true"></div>
+              <div class="result-copy">
+                <h3>Required Clients</h3>
+                <p>To meet your revenue goal</p>
+              </div>
+              <output class="result-value" aria-label="Required clients">—</output>
+            </article>
+
+            <article class="result-card">
+              <div class="result-marker leads-marker" aria-hidden="true"></div>
+              <div class="result-copy">
+                <h3>Required Leads</h3>
+                <p>Based on your lead response rate</p>
+              </div>
+              <output class="result-value" aria-label="Required leads">—</output>
+            </article>
+
+            <article class="result-card">
+              <div class="result-marker prospects-marker" aria-hidden="true"></div>
+              <div class="result-copy">
+                <h3>Required Prospects</h3>
+                <p>To fill your lead pipeline</p>
+              </div>
+              <output class="result-value" aria-label="Required prospects">—</output>
+            </article>
+          </div>
+
+          <p class="results-note">Enter your assumptions to see the pipeline needed for your goal.</p>
+        </section>
+      </div>
+      <footer class="page-footer">A clearer path from revenue goals to action.</footer>
     </main>
   </body>
 </html>
