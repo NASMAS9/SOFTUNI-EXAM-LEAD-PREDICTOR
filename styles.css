@@ -140,6 +140,13 @@ h2 {
   font-weight: 600;
 }
 
+.field-help {
+  margin: 6px 0 0;
+  color: #84939a;
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
 .input-wrap {
   display: flex;
   height: 48px;
