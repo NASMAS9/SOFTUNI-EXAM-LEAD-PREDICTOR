@@ -25,57 +25,85 @@
           </div>
 
           <form class="calculator-form">
-            <div class="field">
-              <label for="language">Language</label>
-              <div class="input-wrap">
-                <select id="language" name="language">
-                  <option value="en" selected>English</option>
-                  <option value="bg">Bulgarian</option>
-                </select>
+            <div class="field-row">
+              <div class="field">
+                <label for="language">Language</label>
+                <div class="input-wrap">
+                  <select id="language" name="language">
+                    <option value="en" selected>English</option>
+                    <option value="bg">Bulgarian</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="currency">Currency</label>
+                <div class="input-wrap">
+                  <select id="currency" name="currency">
+                    <option value="USD" selected>US Dollar ($)</option>
+                    <option value="EUR">Euro (€)</option>
+                    <option value="GBP">British Pound (£)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="campaign-start">Campaign Start</label>
+                <div class="input-wrap date-input-wrap">
+                  <input class="date-display" id="campaign-start" name="campaign-start" type="text" inputmode="numeric" placeholder="DD/MM/YYYY" autocomplete="off">
+                  <span class="date-picker-icon" aria-hidden="true">▦</span>
+                  <input class="date-picker-input" id="campaign-start-picker" type="date" aria-label="Choose Campaign Start date">
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="campaign-end">Campaign End</label>
+                <div class="input-wrap date-input-wrap">
+                  <input class="date-display" id="campaign-end" name="campaign-end" type="text" inputmode="numeric" placeholder="DD/MM/YYYY" autocomplete="off">
+                  <span class="date-picker-icon" aria-hidden="true">▦</span>
+                  <input class="date-picker-input" id="campaign-end-picker" type="date" aria-label="Choose Campaign End date">
+                </div>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="target-revenue-display">Target Revenue <span class="variable-notation">(A)</span></label>
+                <div class="input-wrap monetary-input-wrap">
+                  <span class="currency-symbol" id="target-revenue-currency" aria-hidden="true">$</span>
+                  <input class="monetary-display" id="target-revenue-display" type="text" inputmode="decimal" placeholder="100 000" autocomplete="off">
+                  <input id="target-revenue" name="target-revenue" type="number" min="0" step="any" hidden>
+                </div>
+                <p class="field-help">Your total revenue goal</p>
+              </div>
+
+              <div class="field">
+                <label for="average-order-value-display">Average Order Value <span class="variable-notation">(B)</span></label>
+                <div class="input-wrap monetary-input-wrap">
+                  <span class="currency-symbol" id="average-order-value-currency" aria-hidden="true">$</span>
+                  <input class="monetary-display" id="average-order-value-display" type="text" inputmode="decimal" placeholder="2 500" autocomplete="off">
+                  <input id="average-order-value" name="average-order-value" type="number" min="0" step="any" hidden>
+                </div>
+                <p class="field-help">Average revenue per client</p>
               </div>
             </div>
 
             <div class="field">
-              <label for="currency">Currency</label>
-              <div class="input-wrap">
-                <select id="currency" name="currency">
-                  <option value="USD" selected>US Dollar ($)</option>
-                  <option value="EUR">Euro (€)</option>
-                  <option value="GBP">British Pound (£)</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="field">
-              <label for="target-revenue">Target Revenue</label>
-              <div class="input-wrap">
-                <input id="target-revenue" name="target-revenue" type="number" min="0" step="any" placeholder="100,000">
-              </div>
-              <p class="field-help">Your total revenue goal</p>
-            </div>
-
-            <div class="field">
-              <label for="average-order-value">Average Order Value</label>
-              <div class="input-wrap">
-                <input id="average-order-value" name="average-order-value" type="number" min="0" step="any" placeholder="2,500">
-              </div>
-              <p class="field-help">Average revenue per client</p>
-            </div>
-
-            <div class="field">
-              <label for="lead-response-rate">Lead Response Rate</label>
+              <label for="lead-conversion-rate">Lead Conversion Rate <span class="variable-notation">(C)</span></label>
               <div class="range-control">
-                <input id="lead-response-rate" name="lead-response-rate" type="range" min="1" max="100" step="1" value="25">
-                <output class="range-value" id="lead-response-rate-value" for="lead-response-rate">25%</output>
+                <input id="lead-conversion-rate" name="lead-conversion-rate" type="range" min="1" max="100" step="1" value="25">
+                <output class="range-value" id="lead-conversion-rate-value" for="lead-conversion-rate">25%</output>
               </div>
               <p class="field-help">Percentage of leads that become clients</p>
             </div>
 
             <div class="field">
-              <label for="prospect-response-rate">Prospect Response Rate</label>
+              <label for="prospect-conversion-rate">Prospect Conversion Rate <span class="variable-notation">(D)</span></label>
               <div class="range-control">
-                <input id="prospect-response-rate" name="prospect-response-rate" type="range" min="1" max="100" step="1" value="10">
-                <output class="range-value" id="prospect-response-rate-value" for="prospect-response-rate">10%</output>
+                <input id="prospect-conversion-rate" name="prospect-conversion-rate" type="range" min="1" max="100" step="1" value="10">
+                <output class="range-value" id="prospect-conversion-rate-value" for="prospect-conversion-rate">10%</output>
               </div>
               <p class="field-help">Percentage of prospects that become leads</p>
             </div>
@@ -98,64 +126,38 @@
 
           <div class="result-list" aria-live="polite">
             <article class="result-card">
-              <div class="result-marker clients-marker" aria-hidden="true"></div>
               <div class="result-copy">
-                <h3>Required Clients</h3>
-                <p>To meet your revenue goal</p>
+                <h3><span class="result-marker clients-marker" aria-hidden="true"></span>Clients <span class="variable-notation">(X)</span></h3>
+                <output class="result-value" aria-label="Required clients (X)">—</output>
+                <p>X = A / B</p>
               </div>
-              <output class="result-value" aria-label="Required clients">—</output>
             </article>
 
             <article class="result-card">
-              <div class="result-marker leads-marker" aria-hidden="true"></div>
               <div class="result-copy">
-                <h3>Required Leads</h3>
-                <p>Based on your lead response rate</p>
+                <h3><span class="result-marker leads-marker" aria-hidden="true"></span>Leads <span class="variable-notation">(Y)</span></h3>
+                <output class="result-value" aria-label="Required leads (Y)">—</output>
+                <p>Y = X / C</p>
               </div>
-              <output class="result-value" aria-label="Required leads">—</output>
             </article>
 
             <article class="result-card">
-              <div class="result-marker prospects-marker" aria-hidden="true"></div>
               <div class="result-copy">
-                <h3>Required Prospects</h3>
-                <p>To fill your lead pipeline</p>
+                <h3><span class="result-marker prospects-marker" aria-hidden="true"></span>Prospects <span class="variable-notation">(Z)</span></h3>
+                <output class="result-value" aria-label="Required prospects (Z)">—</output>
+                <p>Z = Y / D</p>
               </div>
-              <output class="result-value" aria-label="Required prospects">—</output>
             </article>
           </div>
 
-          <figure class="pipeline-chart" aria-labelledby="pipeline-chart-heading">
-            <figcaption id="pipeline-chart-heading">Pipeline comparison</figcaption>
-            <div class="chart-rows">
-              <div class="chart-row">
-                <div class="chart-row-heading">
-                  <span>Prospects</span>
-                  <output class="chart-value" id="chart-prospects-value">—</output>
-                </div>
-                <div class="chart-track">
-                  <div class="chart-bar prospects-bar" id="chart-prospects-bar"></div>
-                </div>
-              </div>
-              <div class="chart-row">
-                <div class="chart-row-heading">
-                  <span>Leads</span>
-                  <output class="chart-value" id="chart-leads-value">—</output>
-                </div>
-                <div class="chart-track">
-                  <div class="chart-bar leads-bar" id="chart-leads-bar"></div>
-                </div>
-              </div>
-              <div class="chart-row">
-                <div class="chart-row-heading">
-                  <span>Clients</span>
-                  <output class="chart-value" id="chart-clients-value">—</output>
-                </div>
-                <div class="chart-track">
-                  <div class="chart-bar clients-bar" id="chart-clients-bar"></div>
-                </div>
-              </div>
+          <figure class="monthly-pipeline-chart" id="monthly-pipeline-chart" aria-labelledby="monthly-pipeline-chart-heading" hidden>
+            <figcaption id="monthly-pipeline-chart-heading">Monthly cumulative pipeline</figcaption>
+            <div class="monthly-chart-legend" aria-label="Chart legend">
+              <span><i class="monthly-legend-swatch clients-bar" aria-hidden="true"></i>Clients (X)</span>
+              <span><i class="monthly-legend-swatch leads-bar" aria-hidden="true"></i>Leads (Y)</span>
+              <span><i class="monthly-legend-swatch prospects-bar" aria-hidden="true"></i>Prospects (Z)</span>
             </div>
+            <div class="monthly-chart-rows" id="monthly-chart-rows"></div>
           </figure>
 
           <p class="results-note">Enter your assumptions to see the pipeline needed for your goal.</p>
@@ -172,17 +174,126 @@
         <ol class="how-it-works-steps">
           <li>
             <span class="step-number" aria-hidden="true">01</span>
-            <p>Enter the target revenue and average order value.</p>
+            <div>
+              <h3>Choose your settings</h3>
+              <p>Select your preferred language and currency. The selected currency is used for Target Revenue and Average Order Value.</p>
+            </div>
           </li>
           <li>
             <span class="step-number" aria-hidden="true">02</span>
-            <p>Enter the lead and prospect response rates.</p>
+            <div>
+              <h3>Set the campaign period</h3>
+              <p>Choose the Campaign Start and Campaign End dates. LeadPredictor uses this period to distribute the cumulative pipeline requirements across the campaign months.</p>
+            </div>
           </li>
           <li>
             <span class="step-number" aria-hidden="true">03</span>
-            <p>Click Calculate to see the required clients, leads, and prospects.</p>
+            <div>
+              <h3>Set your revenue targets</h3>
+              <p>Enter the Target Revenue (A) and Average Order Value (B).</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-number" aria-hidden="true">04</span>
+            <div>
+              <h3>Set your conversion rates</h3>
+              <p>Choose the Lead Conversion Rate (C) and Prospect Conversion Rate (D).</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-number" aria-hidden="true">05</span>
+            <div>
+              <h3>Calculate your pipeline</h3>
+              <p>Click Calculate to see how many clients, leads and prospects are required to achieve your revenue target.</p>
+            </div>
           </li>
         </ol>
+
+        <div class="calculation-logic" aria-labelledby="calculation-logic-heading">
+          <h3 id="calculation-logic-heading">Calculation logic</h3>
+          <p class="calculation-intro">LeadPredictor works backwards from your revenue target to calculate the size of the sales pipeline required to achieve your goal.</p>
+
+          <div class="calculation-flow" aria-label="LeadPredictor calculates backwards from revenue to clients, leads, and prospects">
+            <div class="calculation-step">
+              <div class="calculation-equation">
+                <span>Target Revenue (A)</span>
+                <span class="equation-operator">÷</span>
+                <span>Average Order Value (B)</span>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">↓</span>
+              <div class="flow-stage clients-flow-stage">
+                <span>Required Clients (X)</span>
+                <small>X = A / B</small>
+              </div>
+            </div>
+            <span class="calculation-step-arrow" aria-hidden="true">→</span>
+            <div class="calculation-step">
+              <div class="calculation-equation">
+                <span>Required Clients (X)</span>
+                <span class="equation-operator">÷</span>
+                <span>Lead Conversion Rate (C)</span>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">↓</span>
+              <div class="flow-stage leads-flow-stage">
+                <span>Required Leads (Y)</span>
+                <small>Y = X / C</small>
+              </div>
+            </div>
+            <span class="calculation-step-arrow" aria-hidden="true">→</span>
+            <div class="calculation-step">
+              <div class="calculation-equation">
+                <span>Required Leads (Y)</span>
+                <span class="equation-operator">÷</span>
+                <span>Prospect Conversion Rate (D)</span>
+              </div>
+              <span class="flow-arrow" aria-hidden="true">↓</span>
+              <div class="flow-stage prospects-flow-stage">
+                <span>Required Prospects (Z)</span>
+                <small>Z = Y / D</small>
+              </div>
+            </div>
+          </div>
+
+          <p class="monthly-logic-note">The final result tells you how many prospects you need to reach in order to achieve your revenue target, based on your assumed conversion rates.</p>
+          <p class="monthly-logic-note">Your campaign dates determine the number of months in the projection. LeadPredictor uses a progressive campaign ramp-up model, where pipeline acquisition starts more gradually and increases as the campaign develops.</p>
+          <p class="monthly-logic-note">The monthly chart shows cumulative progress towards the final target using a quadratic progression, reaching 100% of the required pipeline by the final month. Bars show cumulative requirements; tooltips also show the new amount required during each month.</p>
+
+          <div class="progressive-calculation">
+            <h4>Progressive monthly calculation</h4>
+            <div class="progressive-formulas">
+              <div>
+                <span>Cumulative target at month n</span>
+                <strong>Cumulative(n) = Total × (n / M)²</strong>
+              </div>
+              <p><span>n</span> = current campaign month · <span>M</span> = total campaign months · <span>Total</span> = final required clients, leads or prospects</p>
+              <div>
+                <span>New requirement during month n</span>
+                <strong>Monthly(n) = Cumulative(n) − Cumulative(n−1)</strong>
+              </div>
+              <p>For Month 1: <strong>Monthly(1) = Cumulative(1)</strong></p>
+            </div>
+
+            <p class="progressive-example-heading">Example — 400 Required Clients over 3 months</p>
+            <div class="progressive-example">
+              <article class="progressive-month">
+                <h5>Month 1</h5>
+                <p>400 × (1/3)² ≈ 44 cumulative clients</p>
+                <p>New clients this month: <strong>44</strong></p>
+              </article>
+              <article class="progressive-month">
+                <h5>Month 2</h5>
+                <p>400 × (2/3)² ≈ 178 cumulative clients</p>
+                <p>New clients this month: <strong>178 − 44 = 134</strong></p>
+              </article>
+              <article class="progressive-month">
+                <h5>Month 3</h5>
+                <p>400 × (3/3)² = 400 cumulative clients</p>
+                <p>New clients this month: <strong>400 − 178 = 222</strong></p>
+              </article>
+            </div>
+            <p class="progressive-conclusion">The same progression is applied to Required Leads (Y) and Required Prospects (Z). This models a campaign that starts gradually and accelerates over time, while reaching 100% of the required pipeline by the final month.</p>
+          </div>
+        </div>
       </section>
 
       <footer class="page-footer">A clearer path from revenue goals to action.</footer>
