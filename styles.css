@@ -413,9 +413,68 @@ h2 {
   font-weight: 700;
 }
 
+.pipeline-chart {
+  margin: 22px 0 0;
+  padding-top: 19px;
+  border-top: 1px solid var(--line);
+}
+
+.pipeline-chart figcaption {
+  margin-bottom: 16px;
+  color: #526671;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.chart-rows {
+  display: grid;
+  gap: 13px;
+}
+
+.chart-row-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+  color: #526671;
+  font-size: 0.74rem;
+}
+
+.chart-value {
+  color: var(--ink);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-track {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #eaf0f1;
+}
+
+.chart-bar {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  transition: width 250ms ease;
+}
+
+.prospects-bar {
+  background: #8d8bd4;
+}
+
+.leads-bar {
+  background: #53a5c5;
+}
+
+.clients-bar {
+  background: #24a596;
+}
+
 .results-note {
-  margin: auto 0 0;
-  padding-top: 22px;
+  margin: 16px 0 0;
   color: #84939a;
   font-size: 0.77rem;
   line-height: 1.5;
