@@ -30,6 +30,20 @@ const resultOutputs = [
   document.querySelector('[aria-label="Required leads"]'),
   document.querySelector('[aria-label="Required prospects"]'),
 ];
+const chartEntries = [
+  {
+    bar: document.querySelector("#chart-prospects-bar"),
+    value: document.querySelector("#chart-prospects-value"),
+  },
+  {
+    bar: document.querySelector("#chart-leads-bar"),
+    value: document.querySelector("#chart-leads-value"),
+  },
+  {
+    bar: document.querySelector("#chart-clients-bar"),
+    value: document.querySelector("#chart-clients-value"),
+  },
+];
 const numberFormatter = new Intl.NumberFormat();
 
 fields.forEach(({ input, valueDisplay }) => {
@@ -51,6 +65,10 @@ resetButton.addEventListener("click", () => {
   });
   resultOutputs.forEach((output) => {
     output.textContent = "—";
+  });
+  chartEntries.forEach(({ bar, value }) => {
+    bar.style.width = "0%";
+    value.textContent = "—";
   });
 });
 
@@ -95,5 +113,11 @@ calculateButton.addEventListener("click", () => {
 
   results.forEach((result, index) => {
     resultOutputs[index].textContent = numberFormatter.format(result);
+  });
+
+  const chartResults = [requiredProspects, requiredLeads, requiredClients];
+  chartResults.forEach((result, index) => {
+    chartEntries[index].bar.style.width = `${(result / requiredProspects) * 100}%`;
+    chartEntries[index].value.textContent = numberFormatter.format(result);
   });
 });
