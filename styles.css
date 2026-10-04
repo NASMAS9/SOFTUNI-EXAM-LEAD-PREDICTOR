@@ -287,6 +287,14 @@ h2 {
   appearance: none;
 }
 
+.range-control #lead-conversion-rate::-webkit-slider-thumb {
+  background: #EAD99B;
+}
+
+.range-control #prospect-conversion-rate::-webkit-slider-thumb {
+  background: #EDBABA;
+}
+
 .range-control input[type="range"]::-moz-range-thumb {
   width: 13px;
   height: 13px;
@@ -294,6 +302,14 @@ h2 {
   border-radius: 50%;
   background: var(--teal);
   box-shadow: 0 1px 5px rgba(23, 43, 58, 0.24);
+}
+
+.range-control #lead-conversion-rate::-moz-range-thumb {
+  background: #EAD99B;
+}
+
+.range-control #prospect-conversion-rate::-moz-range-thumb {
+  background: #EDBABA;
 }
 
 .range-control input[type="range"]:focus-visible {
