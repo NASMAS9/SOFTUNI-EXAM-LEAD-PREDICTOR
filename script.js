@@ -11,11 +11,15 @@ const fields = [
     input: document.querySelector("#lead-response-rate"),
     label: "Lead Response Rate",
     isRate: true,
+    defaultValue: 25,
+    valueDisplay: document.querySelector("#lead-response-rate-value"),
   },
   {
     input: document.querySelector("#prospect-response-rate"),
     label: "Prospect Response Rate",
     isRate: true,
+    defaultValue: 10,
+    valueDisplay: document.querySelector("#prospect-response-rate-value"),
   },
 ];
 
@@ -28,14 +32,22 @@ const resultOutputs = [
 ];
 const numberFormatter = new Intl.NumberFormat();
 
-fields.forEach(({ input }) => {
-  input.addEventListener("input", () => input.setCustomValidity(""));
+fields.forEach(({ input, valueDisplay }) => {
+  input.addEventListener("input", () => {
+    input.setCustomValidity("");
+    if (valueDisplay) {
+      valueDisplay.textContent = `${input.value}%`;
+    }
+  });
 });
 
 resetButton.addEventListener("click", () => {
-  fields.forEach(({ input }) => {
-    input.value = "";
+  fields.forEach(({ input, defaultValue, valueDisplay }) => {
+    input.value = defaultValue ?? "";
     input.setCustomValidity("");
+    if (valueDisplay) {
+      valueDisplay.textContent = `${input.value}%`;
+    }
   });
   resultOutputs.forEach((output) => {
     output.textContent = "—";

@@ -43,18 +43,18 @@
 
             <div class="field">
               <label for="lead-response-rate">Lead Response Rate</label>
-              <div class="input-wrap percent-input">
-                <input id="lead-response-rate" name="lead-response-rate" type="number" min="0" max="100" step="any" placeholder="25">
-                <span class="input-suffix" aria-hidden="true">%</span>
+              <div class="range-control">
+                <input id="lead-response-rate" name="lead-response-rate" type="range" min="1" max="100" step="1" value="25">
+                <output class="range-value" id="lead-response-rate-value" for="lead-response-rate">25%</output>
               </div>
               <p class="field-help">Percentage of leads that become clients</p>
             </div>
 
             <div class="field">
               <label for="prospect-response-rate">Prospect Response Rate</label>
-              <div class="input-wrap percent-input">
-                <input id="prospect-response-rate" name="prospect-response-rate" type="number" min="0" max="100" step="any" placeholder="10">
-                <span class="input-suffix" aria-hidden="true">%</span>
+              <div class="range-control">
+                <input id="prospect-response-rate" name="prospect-response-rate" type="range" min="1" max="100" step="1" value="10">
+                <output class="range-value" id="prospect-response-rate-value" for="prospect-response-rate">10%</output>
               </div>
               <p class="field-help">Percentage of prospects that become leads</p>
             </div>
