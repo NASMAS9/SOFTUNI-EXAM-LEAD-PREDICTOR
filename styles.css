@@ -295,6 +295,14 @@ h2 {
   line-height: 1.55;
 }
 
+.tip-note {
+  margin: 14px 0 0;
+  color: #84939a;
+  font-size: 0.77rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
 .results-heading {
   margin-bottom: 27px;
 }
